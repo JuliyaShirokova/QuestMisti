@@ -30,7 +30,18 @@
                 Кроме того я дам вам листок с очень странными записями. Я думаю, вы разберететь, что с ним делать. Я очень надеюсь вы правильно все расшифруете и найдете следующий след этого вредного Мисти!
             </p>
             <div class="task">
-                <img src="../img/task1.png"/>
+                <img src="../img/task1.png"/> 
+            </div>
+          <div class="hint-trigger">
+                <img src="../img/ghost.png" alt="Подсказка призрака" onclick="toggleHint()" style="cursor: pointer; width: 50px; margin-top: 15px;">
+                <p>Нажмите на Духа, чтобы получить подсказку!</p>
+            </div>
+            <div class='hint-block' id="audioHintBlock">
+                <p>Я могу дать тебе <span>подсказку</span>, но вот сможешь ли ты ее услышать? Если готов, то жми на кнопку проигрывателя.</p>
+                <audio controls>
+                    <source src="../mp3/task1_hint.mp3" type="audio/mpeg">
+                    Ваш браузер не поддерживает элемент <code>audio</code>.
+                </audio>
             </div>
             <div class ='answer_block'>
                 <h2 class = 'answer_header'>Ваш ответ можете написать здесь</h2>
@@ -56,7 +67,23 @@
 
     </div>
 <script>
-        // Функция для проверки ответа
+        function toggleHint() {
+            const hintBlock = document.getElementById('audioHintBlock');
+            const hintTrigger = document.querySelector('.hint-trigger'); // Находим контейнер с Духом
+
+            // Проверяем, если блок подсказки скрыт (мы его всегда скрываем, если он не 'block')
+            if (hintBlock.style.display === 'none' || hintBlock.style.display === '') {
+                // 1. Делаем блок подсказки видимым
+                hintBlock.style.display = 'block';
+                
+                // 2. ⭐⭐ НОВОЕ: Скрываем контейнер с Духом (кнопку) ⭐⭐
+                if (hintTrigger) {
+                    hintTrigger.style.display = 'none';
+                }
+            }
+            // Здесь мы убрали блок 'else', чтобы подсказка не исчезала, если нажать второй раз.
+            // Дух ушел, и игрок может слушать подсказку.
+        }     // Функция для проверки ответа
         function checkAnswer() {
             // ... (предыдущий код получения и очистки ответа остается) ...
             let userAnswer = document.getElementById('answerInput').value;
@@ -71,7 +98,7 @@
             if (cleanUserAnswer === cleanCorrectAnswer) {
                 // Правильный ответ
                 feedbackElement.textContent = "✅ Верно! Вы расшифровали послание! Жмите 'Идти дальше'.";
-                feedbackElement.style.color = "#ccff00";
+                feedbackElement.style.color = "#375d36";
 
                 // Убираем класс disabled и возвращаем рабочую ссылку
                 nextButton.classList.remove('disabled');

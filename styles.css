@@ -200,6 +200,53 @@ p {
   color:  rgb(40, 0, 101);
   padding: 10px;
 }
+/* --- Стили для Блока Подсказки (Hint Block) --- */
+.hint-block {
+    /* ⭐⭐ НОВЫЙ СТИЛЬ: ИЗНАЧАЛЬНО СКРЫВАЕМ БЛОК ⭐⭐ */
+    display: none; 
+    /* ------------------------------------------------ */
+    background-color: #333333; 
+    padding: 20px; 
+    border-radius: 8px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); 
+    margin-top: 30px; 
+    border: 1px solid #776655;
+}
+/* (Остальные стили .hint-block p и .hint-block audio остаются) */
+
+/* --- Стили для Контейнера Кнопки-Призрака --- */
+.hint-trigger {
+    /* Центрируем иконку и текст */
+    text-align: center; 
+    margin: 20px 0;
+}
+
+.hint-trigger p {
+    /* Стиль для текста под иконкой */
+    color: #565555;
+    font-size: 0.9em;
+    margin-top: 5px;
+}
+/* --- Стили для Блока Подсказки (Hint Block) --- */
+
+.hint-block p {
+    /* Цвет текста подсказки (если основной текст белый, то подойдет) */
+    color: #eeeeee; 
+    /* Отступ снизу для отделения от плеера */
+    margin-bottom: 15px;
+    /* Увеличение шрифта для лучшей читаемости */
+    font-size: 1.1em;
+}
+.hint-block span{
+  color:  rgb(236, 199, 96);
+}
+/* Стили для аудиопроигрывателя внутри блока */
+.hint-block audio {
+    /* Полная ширина контейнера для аккуратного вида */
+    width: 100%; 
+    /* Небольшой отступ снизу */
+    margin-bottom: 0;
+}
 /* --- Стили для блока ответа и проверки --- */
 .answer_block{
   display: block;

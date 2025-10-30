@@ -247,6 +247,33 @@ p {
     /* Небольшой отступ снизу */
     margin-bottom: 0;
 }
+/* --- 1. Определение анимации "Полет" --- */
+@keyframes float {
+    /* Начальное состояние: смещение 0 пикселей */
+    0% {
+        transform: translateY(0);
+    }
+    /* Середина анимации: смещение вверх на 10 пикселей */
+    50% {
+        transform: translateY(-10px);
+    }
+    /* Конечное состояние: возвращение к 0 пикселей */
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/* --- 2. Применение анимации к иконке призрака --- */
+.hint-trigger img {
+    /* Применяем анимацию "float" */
+    animation-name: float;
+    /* Длительность одного цикла анимации */
+    animation-duration: 3s; 
+    /* Повторение анимации бесконечно */
+    animation-iteration-count: infinite; 
+    /* Плавность: замедление в начале и конце */
+    animation-timing-function: ease-in-out; 
+}
 /* --- Стили для блока ответа и проверки --- */
 .answer_block{
   display: block;

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Странные звуки</title>
+    <link href="https://fonts.googleapis.com/css2?family=Metal+Mania&family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+    <div class="container">
+
+        <header class="header">
+            <h1>Задание 3. Странные звуки</h1>
+        </header>
+        <div class="hero-image" style="background-image: url('../img/bann4.png');">
+        </div>
+
+        <main class="content-block">
+            <p>
+                Итак, наша Книга называется Граф Монте-Кристо или на немецком языке Der Graf von Monte-Christo. Это очень интересная книга, как-то в молодости я ее читал, пугая шорохом страниц владельца дома. Э-эх, было время.... 
+            </p>
+            <p>
+                Но я немного отвлекся от нашей миссии. Время для нового испытания! 
+            </p>
+            <h3>Задание</h3>
+            <p>
+                Внимательно послушайте, что я вам скажу. Нажмите на кнопку проигрывателя и слушайте. Что вы слышали и сколько раз? Вам эта информация очень пригодится!
+            </p>
+            <div class="audio-player-container">
+                <audio id="secretAudio" src="../mp3/Mi.mp3" preload="auto" controls>
+                    Ваш браузер не поддерживает элемент аудио.
+                </audio>
+                <p style="font-size: 0.8em; color: #000">**Для продолжения необходимо прослушать аудиозапись до конца.</p>
+            </div>
+            <div class="buttons">
+                <a href="./page3.html" class="button back-button">Вернуться назад</a>
+                <a href="#" class="button forward-button disabled" id="nextButton">Идти дальше</a>
+            </div>
+
+        </main>
+
+        <footer class="footer">
+            <p>&copy; Старый Дух города</p>
+        </footer>
+
+    </div>
+<script>
+    // Нам не нужна функция checkAnswer, так как ты убрал поле ввода.
+    // Заменим ее на логику для аудио и кнопки "Идти дальше".
+
+    // 1. Получаем элементы
+    const audioPlayer = document.getElementById('secretAudio');
+    const nextButton = document.getElementById('nextButton'); 
+
+    // 2. Флаг, который показывает, проиграно ли аудио
+    let audioPlayed = false;
+
+    // 3. Блокируем кнопку по умолчанию (она уже заблокирована в HTML, но это для надежности)
+    nextButton.classList.add('disabled');
+    nextButton.href = '#';
+
+    // 4. Добавляем слушатель события 'ended' (завершение воспроизведения)
+    audioPlayer.addEventListener('ended', function() {
+        // Эта функция выполнится только после того, как аудио доиграет до конца
+        
+        // Проверяем, что аудио еще не было проиграно (чтобы не запускать код повторно)
+        if (!audioPlayed) {
+            audioPlayed = true; // Устанавливаем флаг в true
+            
+            // Разблокируем кнопку "Идти дальше"
+            nextButton.classList.remove('disabled');
+            nextButton.href = './page5.html'; // Устанавливаем правильный путь
+  
+        }
+    });
+
+    // 5. Защита от попытки перехода по заблокированной кнопке (опционально, но полезно)
+    nextButton.addEventListener('click', function(event) {
+        if (nextButton.classList.contains('disabled')) {
+            // Если кнопка заблокирована (содержит класс disabled)
+            event.preventDefault(); // Отменяем стандартное действие (переход по ссылке)
+            alert("Для перехода к следующему заданию необходимо полностью прослушать аудиозапись!");
+        }
+        // Если кнопка не заблокирована, ничего не делаем, и переход происходит
+    });
+</script>
+</body>
+</html>

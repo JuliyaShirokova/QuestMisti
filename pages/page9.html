@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Загадка Старого духа</title>
+    <link href="https://fonts.googleapis.com/css2?family=Metal+Mania&family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <div id="skullOverlay">
+        <img src="../img/skull.png" alt="Череп" class="skull-image">
+    </div>
+
+    <div class="container">
+
+        <header class="header">
+            <h1>Задание 8. Загадка Старого Духа</h1>
+        </header>
+        <div class="hero-image" style="background-image: url('../img/bann9.png');">
+        </div>
+
+        <main class="content-block">
+            <p>
+                Теперь, когда вы выдержали испытание по ориентации вы можете возвращаться ДОМОЙ и отыскать дома объект, который есть ответом на такую загадку:
+            </p>
+            <h3>Загадка</h3>
+            <p>
+                О, горе мне, <br />
+                Когда-то был я вместилищем разума,<br />
+                а нынче пуст я.<br />
+                и безумен мой взгляд...
+            </p>
+            <div class ='answer_block'>
+                <h2 class = 'answer_header'>Ваш ответ можете написать здесь</h2>
+                <div class="answer">
+                    <input type="text" id="answerInput" placeholder="Введите ваш ответ здесь">
+                    <button onclick="checkAnswer()">Проверить</button>
+                   <p id="feedback"></p>           
+                </div>   
+            </div>
+            <div class="buttons">
+                <a href="./page8.html" class="button back-button">Вернуться назад</a>
+                <a href="№" class="button forward-button disabled" id="nextButton">Идти дальше</a>
+
+            </div>
+    
+
+
+        </main>
+
+        <footer class="footer">
+            <p>&copy; Старый Дух города</p>
+        </footer>
+
+    </div>
+    <script>
+        // Функция для проверки ответа
+        function checkAnswer() {
+            // ... (предыдущий код получения и очистки ответа остается) ...
+            let userAnswer = document.getElementById('answerInput').value;
+            const correctAnswer = "череп";
+            
+            let feedbackElement = document.getElementById('feedback');
+            let nextButton = document.getElementById('nextButton'); 
+            
+            // НОВЫЙ ЭЛЕМЕНТ: Получаем контейнер черепа
+            let skullOverlay = document.getElementById('skullOverlay'); 
+
+            let cleanUserAnswer = userAnswer.toLowerCase().trim();
+            let cleanCorrectAnswer = correctAnswer.toLowerCase().trim();
+
+            if (cleanUserAnswer === cleanCorrectAnswer) {
+                // Правильный ответ
+                feedbackElement.textContent = "✅ Верно! Вы расшифровали послание! Жмите 'Идти дальше'.";
+                feedbackElement.style.color = "#ccff00";
+
+                // НОВОЕ ДЕЙСТВИЕ: Показываем череп
+                skullOverlay.classList.add('show-skull'); 
+
+                // Убираем класс disabled и возвращаем рабочую ссылку
+                nextButton.classList.remove('disabled');
+                nextButton.href = './page10.html'; 
+            } else {
+                // Неправильный ответ
+                feedbackElement.textContent = "❌ Неверно. Попробуйте еще раз!";
+                feedbackElement.style.color = "red";
+
+                // ДЕЙСТВИЕ: Скрываем череп (на случай, если его уже показывали)
+                skullOverlay.classList.remove('show-skull'); 
+
+                // Убеждаемся, что кнопка заблокирована
+                nextButton.classList.add('disabled');
+                nextButton.href = '#'; 
+            }
+        }
+    </script>
+</body>
+</html>

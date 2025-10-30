@@ -1,0 +1,425 @@
+/* ----------------------------------------------------------------
+   1. Общие стили и сброс
+   ---------------------------------------------------------------- */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    /* Цветовая палитра: мрачные сине-фиолетовые тона */
+    background-color: #221946; /* светло-бежевый фон */
+    background-image: url('img/altes.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #000; /* Светлый, призрачный текст */
+    font-family: 'Tinos', serif; /* Основной шрифт - легко читаемый готический */
+    line-height: 1.6;
+    overflow: auto;
+}
+header {
+  position: absolute;
+  top: 0;
+  width: 1000px;
+  background-color: rgb(236, 199, 96);
+  border: 1px solid rgb(233, 175, 17);
+  box-shadow: 0 10px 10px rgba(252, 207, 84, 0.8); /* Свечение */
+}
+/* ----------------------------------------------------------------
+   2. Шрифты и Типографика
+   ---------------------------------------------------------------- */
+
+h1, h2, h3, h4 {
+    font-family: 'Metal Mania', cursive; /* Готический шрифт для заголовков */
+    font-weight: 700;
+    color: #000; /* Яркий, кислотно-зеленый цвет для контраста и магии */
+    text-align: center;
+    margin-bottom: 0;
+}
+
+h1 {
+    font-size: 3em;
+    padding: 20px 0;
+}
+
+h2 {
+    font-size: 2em;
+    color: #2a0167; /* Заголовки H2 более "призрачные" */
+}
+h3{
+    font-size: 1.8em;
+    color: #40019f; 
+}
+h4{
+  font-size: 1.2em;
+  color: #4e035a;
+  text-align: left;
+  margin-bottom: 20px;
+}
+h4 span{
+  border-left: 3px solid #4e035a;
+  padding-left: 10px;
+  font-style: italic;
+}
+/* ----------------------------------------------------------------
+   3. Макет (Layout)
+   ---------------------------------------------------------------- */
+
+.container {
+    max-width: 1000px; /* Ограничиваем ширину контента */
+    margin: 0 auto; /* Центрируем контейнер */
+    padding: 0;
+     padding-top: 40px;
+}
+
+.content-block {
+    /* Полупрозрачный "призрачный" блок для текста */
+    background-color:  rgb(255, 236, 184, 0.5); /* Полупрозрачный */
+    border-radius: 15px;
+    padding: 30px;
+    margin-top: 20px;
+    box-shadow: 0 10px 10px rgba(252, 207, 84, 0.8); /* Свечение */
+}
+
+p {
+    font-family: 'Tinos', serif;
+    margin-bottom: 15px;
+    padding: 0 24px;
+    font-size: 1.4em;
+    font-weight: 600;
+}
+
+/* ----------------------------------------------------------------
+   4. Изображение и Заглушка
+   ---------------------------------------------------------------- */
+
+.hero-image {
+    width: 100%; 
+    height: 350px;
+    background-size: cover;
+    background-position: top;
+    margin: 0;
+    margin-top: 40px;
+}
+
+/* ----------------------------------------------------------------
+   5. Кнопки и Ссылки
+   ---------------------------------------------------------------- */
+.buttons{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+
+}
+.button {
+    display: block; /* Кнопка на всю ширину блока */
+    width: 100%;
+    max-width: 300px; /* Ограничиваем максимальную ширину кнопки */
+    margin: 30px auto 10px;
+    padding: 15px 25px;
+    text-align: center;
+    text-decoration: none;
+    font-family: 'Metal Mania', cursive;
+    font-size: 1.5em;
+    border-radius: 10px;
+    transition: all 0.3s, transform 0.3s;
+}
+.forward-button{
+    background-color: #7000b3; /* Яркий цвет для привлечения внимания */
+    color: rgb(236, 199, 96);
+    border: 3px solid #400762;
+    box-shadow: 4px 4px 0px #400762 /* Эффект мультяшной кнопки */
+}
+.forward-button:hover {
+    background-color: rgb(236, 199, 96); /* Осветление при наведении */
+    transform: translateY(-2px); /* Небольшое "подпрыгивание" */
+    color: #000;
+    box-shadow: 6px 6px 0px #7000b3;
+}
+.button.disabled {
+    /* Делаем кнопку тусклой */
+    opacity: 0.5;
+    /* Убираем "подпрыгивание" и тень, чтобы она выглядела неактивной */
+    transform: none;
+    box-shadow: none;
+    cursor: not-allowed; /* Курсор "запрет" */
+    pointer-events: none; /* ГЛАВНОЕ: Отключаем все события мыши (клик) */
+}
+/* При наведении на заблокированную кнопку ничего не происходит */
+.button.disabled:hover {
+    background-color: #7000b3; /* Цвет возвращается к базовому (для forward-button) */
+}
+.back-button {
+    background-color: #4b4b4b;
+    color: rgb(236, 199, 96);
+    border: 3px solid #2c2b2d;
+    box-shadow: 4px 4px 0px  #313131;
+}
+.back-button:hover {
+    background-color:#bfbfbf;
+    color: #000;
+    transform: translateY(-2px);
+    box-shadow: 6px 6px 0px #4b4b4b;
+}
+
+
+/* ----------------------------------------------------------------
+   6. Блок для загадки/цитаты
+   ---------------------------------------------------------------- */
+.task{
+  max-width: 1000px;
+  max-height: auto;
+}
+.task img{
+  max-width: 100%;
+}
+.task_text{
+  padding: 15px;
+  background-color: rgb(255, 255, 255);
+  color: #000;
+  font-style: italic;
+  border-left: 6px solid rgb(40, 0, 101);
+}
+.audio-player-container{
+  margin: 20px 24px;
+}
+#taskVideo{
+  max-width: 100%;
+  width: 450px;
+  height: auto;
+}
+.list_tasks{
+  margin-left: 25px;
+  border-left: 3px solid rgb(40, 0, 101);;
+}
+.list_tasks li{
+  font-size: 1.3em;
+  font-weight: 600;
+  color:  rgb(40, 0, 101);
+  padding: 10px;
+}
+/* --- Стили для блока ответа и проверки --- */
+.answer_block{
+  display: block;
+}
+.answer_header{
+  color: #375d36;
+  text-align: left;
+  margin: 10px 0 0 0;
+}
+.answer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 10px 0;
+    gap: 15px; /* Расстояние между элементами */
+}
+.answer input {
+    width: 100%;
+    max-width: 500px;
+    padding: 15px;
+    font-size: 1.1em;
+    font-family: 'Tinos', serif;
+    background-color: rgba(255, 255, 255, 0.9); /* Светлое поле для ввода */
+    border: 3px solid #375d36;
+    border-radius: 8px;
+    color: #1a0033; /* Темный текст */
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.answer input:focus {
+    border-color: rgba(252, 207, 84, 0.8); /* Подсветка при фокусе */
+}
+
+.answer button {
+    /* Стили как у кнопки, но немного меньше */
+    padding: 10px 20px;
+    font-family: 'Metal Mania', cursive;
+    font-size: 1.3em;
+    background-color: #375d36; /* Фиолетовая кнопка */
+    color:  rgb(236, 199, 96);
+    border: 3px solid  rgb(104, 87, 41);;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 3px 3px 0px rgba(252, 207, 84, 0.8);
+    transition: all 0.3s, transform 0.3s;
+}
+
+.answer button:hover {
+    background-color: #76c373;
+    color: #000;
+    transform: translateY(-2px);
+    box-shadow: 4px 4px 0px #375d36;
+}
+
+#feedback {
+    margin-top: 10px;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* ----------------------------------------------------------------
+   7. Футер
+   ---------------------------------------------------------------- */
+
+.footer {
+    text-align: center;
+    margin-top: 15px;
+    padding: 10px 0;
+    width: 1000px;
+    background-color: #221946;
+}
+.footer p{
+  font-size: 1.5em;
+  font-weight: 800;
+  color: rgb(255, 255, 255);
+}
+
+/* --- Стили для Появления Черепа --- */
+
+/* Контейнер для всего оверлея */
+#skullOverlay {
+    /* Фиксируем его на месте, чтобы он был поверх всего */
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Очень высокий z-index, чтобы быть над всеми другими элементами */
+    z-index: 1000; 
+    /* По умолчанию полностью прозрачный (скрыт) */
+    opacity: 0; 
+    /* Плавный переход для свойства opacity (2 секунды) */
+    transition: opacity 2s ease-in-out; 
+    /* Центрируем изображение */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Опционально: можно добавить полупрозрачный фон */
+    /* background-color: rgba(0, 0, 0, 0.3); */ 
+    /* Убедимся, что клики не проходят сквозь, пока он скрыт */
+    pointer-events: none; 
+}
+
+/* Стили для самого изображения черепа */
+.skull-image {
+    max-width: 50%; /* Например, 50% от ширины экрана */
+    max-height: 50%; /* Например, 50% от высоты экрана */
+    /* Опционально: можно добавить легкую тень для атмосферы */
+    filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.6));
+}
+
+/* Класс для отображения - устанавливает полную непрозрачность */
+.show-skull {
+    opacity: 1 !important;
+    /* Разрешаем кликать на нем (хотя в нашем случае не нужно) */
+    pointer-events: all; 
+}
+
+/* ----------------------------------------------------------------
+   8. АДАПТАЦИЯ ДЛЯ МОБИЛЬНЫХ УСТРОЙСТВ (Max-width: 600px)
+   ---------------------------------------------------------------- */
+
+@media (max-width: 600px) {
+
+    body{
+      background-image: none;
+      background-color:  rgb(255, 236, 184);
+    }
+    /* 3. Макет (Layout) и Основные контейнеры */
+    .container {
+        /* Убираем фиксированную ширину, чтобы контент занимал всю доступную ширину */
+        max-width: 100%;
+        /* Добавляем небольшой внутренний отступ по бокам, чтобы контент не прилипал к краю */
+        padding: 0 15px;
+        padding-top: 50px; /* Увеличиваем отступ сверху для заголовка */
+    }
+    
+    .content-block {
+        /* Убираем горизонтальные отступы внутри блока, чтобы дать больше места контенту */
+        padding: 20px 15px;
+        margin-top: 10px;
+        margin-bottom: 15px;
+    }
+
+    /* Сбрасываем фиксированную ширину у шапки и футера */
+    header, .footer {
+        width: 100%;
+        left: 0;
+        right: 0;
+    }
+    .footer{
+      position: absolute;
+    }
+
+    /* 2. Шрифты и Типографика */
+    h1 {
+        font-size: 1.6em; /* Уменьшаем основной заголовок */
+        padding: 15px 0;
+    }
+    h2 {
+        font-size: 1.4em; /* Уменьшаем H2 */
+    }
+    p {
+        font-size: 1.1em; /* Уменьшаем размер основного текста для лучшей читаемости */
+        padding: 0 5px; /* Уменьшаем горизонтальные отступы для текста */
+    }
+    
+    /* 4. Изображение и Видео */
+    .hero-image {
+        height: 200px; /* Уменьшаем высоту баннера */
+        margin-top: 0;
+    }
+
+    /* Ограничиваем максимальную ширину видео, чтобы оно не было слишком большим */
+    #taskVideo {
+        width: 100%;
+        max-width: 100%; /* Гарантируем, что видео занимает всю доступную ширину */
+    }
+    .audio-player-container{
+      margin: 0;
+    }
+    /* 5. Блок ответа */
+    .answer {
+        /* Меняем расположение элементов на вертикальное */
+        flex-direction: column;
+        align-items: stretch; /* Растягиваем элементы на всю ширину */
+        gap: 10px; 
+    }
+    
+    .answer input {
+        max-width: 100%; /* Поле ввода на всю ширину */
+        padding: 12px;
+        font-size: 1em;
+    }
+
+    .answer button {
+        max-width: 100%; /* Кнопка на всю ширину */
+        padding: 12px 20px;
+        font-size: 1.2em;
+    }
+
+    /* 6. Кнопки навигации (Назад и Дальше) */
+    .buttons {
+        /* Меняем расположение кнопок на вертикальное */
+        flex-direction: column;
+        gap: 10px;
+        padding: 0 15px; /* Отступ от краев экрана */
+    }
+
+    .button {
+        max-width: 100%; /* Кнопки на всю ширину, занимая контейнер */
+        margin: 5px auto; /* Уменьшаем вертикальный отступ */
+        font-size: 1.3em;
+    }
+
+    /* 7. Футер */
+    .footer p {
+        font-size: 1em;
+        padding: 0 15px;
+    }
+}

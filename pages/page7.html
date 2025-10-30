@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ориентация Ух</title>
+    <link href="https://fonts.googleapis.com/css2?family=Metal+Mania&family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+    <div class="container">
+
+        <header class="header">
+            <h1>Задание 6. Ориентация Ух</h1>
+        </header>
+        <div class="hero-image" style="background-image: url('../img/bann7.png');">
+        </div>
+
+        <main class="content-block">
+            <p>
+                Отлично! Двигаемся дальше! И следующее ваше место назначения зашифровано здесь.
+            </p>
+            <div class="task">
+                <img src="../img/task_6.png"/>
+            </div>  
+            <div class ='answer_block'>
+                <h2 class = 'answer_header'>Ваш ответ можете написать здесь</h2>
+                <div class="answer">
+                    <input type="text" id="answerInput" placeholder="Введите ваш ответ здесь">
+                    <button onclick="checkAnswer()">Проверить</button>
+                   <p id="feedback"></p>           
+                </div>   
+            </div>
+            <div class="buttons">
+                <a href="./page6.html" class="button back-button">Вернуться назад</a>
+                <a href="№" class="button forward-button disabled" id="nextButton">Идти дальше</a>
+
+            </div>
+    
+
+
+        </main>
+
+        <footer class="footer">
+            <p>&copy; Старый Дух города</p>
+        </footer>
+
+    </div>
+<script>
+        // Функция для проверки ответа
+        function checkAnswer() {
+            // ... (предыдущий код получения и очистки ответа остается) ...
+            let userAnswer = document.getElementById('answerInput').value;
+            const correctAnswer = "7";
+            
+            let feedbackElement = document.getElementById('feedback');
+            let nextButton = document.getElementById('nextButton'); // Наша кнопка "Идти дальше"
+
+            let cleanUserAnswer = userAnswer.toLowerCase().trim();
+            let cleanCorrectAnswer = correctAnswer.toLowerCase().trim();
+
+            if (cleanUserAnswer === cleanCorrectAnswer) {
+                // Правильный ответ
+                feedbackElement.textContent = "✅ Верно! Вы расшифровали послание! Жмите 'Идти дальше'.";
+                feedbackElement.style.color = "#ccff00";
+
+                // Убираем класс disabled и возвращаем рабочую ссылку
+                nextButton.classList.remove('disabled');
+                nextButton.href = './page8.html'; // Делаем кнопку рабочей
+            } else {
+                // Неправильный ответ
+                feedbackElement.textContent = "❌ Неверно. Попробуйте еще раз!";
+                feedbackElement.style.color = "red";
+
+                // Убеждаемся, что кнопка заблокирована
+                nextButton.classList.add('disabled');
+                nextButton.href = '#'; // Защита от перехода
+            }
+        }
+    </script>
+</body>
+</html>
